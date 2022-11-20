@@ -179,7 +179,11 @@ public struct iPhoneNumberField: UIViewRepresentable {
         } else {
             uiView.withExamplePlaceholder = autofillPrefix
         }
-        if autofillPrefix && displayedText.isEmpty && isFirstResponder { uiView.resignFirstResponder() } // Workaround touch autofill issue
+        if autofillPrefix && displayedText.isEmpty && isFirstResponder {
+            DispatchQueue.main.async {
+                uiView.resignFirstResponder()
+            }
+        } // Workaround touch autofill issue
         uiView.tintColor = accentColor
         
         if let numberPlaceholderColor = numberPlaceholderColor {
@@ -199,7 +203,7 @@ public struct iPhoneNumberField: UIViewRepresentable {
                 uiView.resignFirstResponder()
             }
         }
-        
+
         configuration(uiView)
     }
 
