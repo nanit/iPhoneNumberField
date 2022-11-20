@@ -192,10 +192,12 @@ public struct iPhoneNumberField: UIViewRepresentable {
             uiView.textAlignment = textAlignment
         }
 
-        if isFirstResponder {
-            uiView.becomeFirstResponder()
-        } else {
-            uiView.resignFirstResponder()
+        DispatchQueue.main.async {
+            if isFirstResponder {
+                uiView.becomeFirstResponder()
+            } else {
+                uiView.resignFirstResponder()
+            }
         }
         
         configuration(uiView)
