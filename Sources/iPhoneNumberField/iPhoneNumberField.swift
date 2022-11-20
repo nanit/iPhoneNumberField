@@ -180,9 +180,7 @@ public struct iPhoneNumberField: UIViewRepresentable {
             uiView.withExamplePlaceholder = autofillPrefix
         }
         if autofillPrefix && displayedText.isEmpty && isFirstResponder {
-            DispatchQueue.main.async {
-                uiView.resignFirstResponder()
-            }
+            uiView.resignFirstResponder()
         } // Workaround touch autofill issue
         uiView.tintColor = accentColor
         
